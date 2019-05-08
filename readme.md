@@ -28,7 +28,7 @@ sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib libpq-dev
 ```
 
-## Create prouction project database (**project_production**) and privileged postgres user (**deploy**) with password "**mypass**". Please, change these bold fields to your own!
+## Create production database (**project_production**) and privileged postgres user (**deploy**) with password "**mypass**". Please, change these bold fields to your own!
 
 ```
 sudo -u postgres psql
@@ -165,7 +165,7 @@ yarn run deploy-production
 
 If there are no errors you can find your application started on 3003 port.
 
-Lets add an Nginx proxy from 80 port to 3003.
+Lets add an Nginx proxy from 80 port to 3003. You can find example in _./nginx/project.storuky.com_
 
 ```
 sudo vim /etc/nginx/sites-enabled/project_name.storuky.com.conf
