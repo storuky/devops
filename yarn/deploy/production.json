@@ -1,0 +1,12 @@
+{
+  "server": "deploy@ip_adress",
+  "port": 22,
+  "server_dir": "/home/deploy/client-app",
+  "repo": "git@github.com:storuky/client-app.git",
+  "prj_git_relative_dir": "",
+  "branch": "master",
+  "force_regenerate_git_dir": true,
+  "history_releases_count": 5,
+  "prerun": ["yarn install", "yarn run build"],
+  "run_cmd": "yarn run restart-production"
+}

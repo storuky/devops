@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "deploy-production": "MINA_CONFIG=deploy/production.json mina deploy",
+    "restart-production": "pm2 kill && PORT=3003 pm2 start server.js"
+  },
+  "dependencies": {
+    "mina": "^1.0.9"
+  }
+}

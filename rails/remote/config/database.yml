@@ -1,0 +1,9 @@
+default: &default
+  adapter: postgresql
+  pool: 10
+  timeout: 5000
+  password: <%= ENV['DB_PASSWORD']%>
+
+production:
+  <<: *default
+  database: project_production
