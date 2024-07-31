@@ -3,17 +3,22 @@
 ## Create **deploy** user with sudo priveleges
 
 ```
-adduser --system --group deploy
-mkdir /home/deploy/.ssh
-chmod 0700 /home/deploy/.ssh/
-cp -Rfv /root/.ssh /home/deploy/
-chown -Rfv deploy.deploy /home/deploy/.ssh
-chown -R deploy:deploy /home/deploy/
-gpasswd -a deploy sudo
-echo "deploy ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
-service ssh restart
-usermod -s /bin/bash deploy
-su deploy
+USER_NAME="deploy"
+PUBLIC_KEY=""
+
+# Create a new user
+sudo adduser --disabled-password --gecos "" $USER_NAME
+
+# Create SSH directory and set permissions
+sudo mkdir -p /home/$USER_NAME/.ssh
+sudo chmod 700 /home/$USER_NAME/.ssh
+
+# Add public key to authorized_keys
+echo $PUBLIC_KEY | sudo tee /home/$USER_NAME/.ssh/authorized_keys
+
+# Set permissions for authorized_keys
+sudo chmod 600 /home/$USER_NAME/.ssh/authorized_keys
+sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/.ssh
 ```
 
 ## Update packages list
